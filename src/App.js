@@ -1,44 +1,48 @@
-import React from 'react';
-import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
+import React, { Component } from 'react';
 import './App.css';
-import Header from './Components/Layouts/header'
-import Footer from './Components/Layouts/footer'
-import GridTodo from './Components/Layouts/grid'
+import Header from './Components/Layouts/header';
+import Footer from './Components/Layouts/footer';
+import MainGrid from './Components/Layouts/mainGrid';
+import { categories, todos } from './data';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    marginTop: "100px",
-    height: "100%",
-    width: "90%",
-    
-  },
-  paper: {
-    height: "100%",
+class App extends Component {
+
+  state = {
+    todos
   }
-}));
 
-function App() {
+  // getTodosByCategory () {
+  //   return Object.entries(this.state.todos.reduce((todos, todo) => {
+  //     const { category } = todo
 
-  const classes = useStyles();
+  //     todos[category] = todos[category]
+  //       ? [...todos[category], todo]
+  //       : [todo]
 
-  return (
-    <div className="App">
-      <Header></Header>
-      <div className={classes.root}>
-        <Grid container spacing={6}>
-          <Grid item xs={6}>
-            <GridTodo></GridTodo>
-          </Grid>
-          <Grid item xs={6}>
-            <Paper className={classes.paper}>Hello</Paper>
-          </Grid>
-        </Grid>
+  //     return todos
+  //   }, {})
+  //   )
+  // }
+
+  render() {
+
+    const todos = this.state.todos
+
+    console.log(todos)
+
+    return (
+      
+      <div className="App">
+        <Header></Header>
+        <div className='Content'>
+          <MainGrid todos={todos}>
+
+          </MainGrid>
+        </div>
+        <Footer categories={categories}></Footer>
       </div>
-      <Footer></Footer>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;
