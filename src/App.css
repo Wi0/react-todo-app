@@ -11,3 +11,12 @@
   width: 90%;
   height: 90%;
 }
+
+.NavBar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.create-select {
+  min-width: 120px;
+}

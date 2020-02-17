@@ -17,18 +17,15 @@ class App extends Component {
       category: group
     })
   }
-  // getTodosByCategory () {
-  //   return Object.entries(this.state.todos.reduce((todos, todo) => {
-  //     const { category } = todo
 
-  //     todos[category] = todos[category]
-  //       ? [...todos[category], todo]
-  //       : [todo]
-
-  //     return todos
-  //   }, {})
-  //   )
-  // }
+  createTodoHandler = todo => {
+    this.setState(({ todos }) => ({
+      todos: [
+        ...todos,
+        todo
+      ]
+    }))
+  }
 
   render() {
 
@@ -38,7 +35,7 @@ class App extends Component {
     return (
       
       <div className="App">
-        <Header></Header>
+        <Header onTodoCreate={this.createTodoHandler}></Header>
         <div className='Content'>
           <MainGrid 
             todos={todos}
