@@ -10,7 +10,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SimpleBottomNavigation( props ) {
+export default function SimpleBottomNavigation( {group, categories, onSelect} ) {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -19,12 +19,14 @@ export default function SimpleBottomNavigation( props ) {
       value={value}
       onChange={(event, newValue) => {
         setValue(newValue);
+        onSelect(newValue);
       }}
       showLabels
       className={classes.root}
     >
-      {props.categories.map(category => 
-        <BottomNavigationAction label={category} icon={<RestoreIcon />} />
+        <BottomNavigationAction label="All" icon={<RestoreIcon />} />
+      {categories.map(category => 
+        <BottomNavigationAction label={category} value={category} key={category} icon={<RestoreIcon />} />
       )}
     </BottomNavigation>
   );

@@ -8,9 +8,15 @@ import { categories, todos } from './data';
 class App extends Component {
 
   state = {
-    todos
+    todos,
+    category: ''
   }
 
+  categorySelectHandler = group => {
+    this.setState({
+      category: group
+    })
+  }
   // getTodosByCategory () {
   //   return Object.entries(this.state.todos.reduce((todos, todo) => {
   //     const { category } = todo
@@ -26,20 +32,24 @@ class App extends Component {
 
   render() {
 
-    const todos = this.state.todos
-
-    console.log(todos)
-
+    const todos = this.state.todos;
+    const category = this.state.category;
+    
     return (
       
       <div className="App">
         <Header></Header>
         <div className='Content'>
-          <MainGrid todos={todos}>
-
-          </MainGrid>
+          <MainGrid 
+            todos={todos}
+            category={category}
+          />
         </div>
-        <Footer categories={categories}></Footer>
+        <Footer
+          category={category}
+          categories={categories}
+          onSelect={this.categorySelectHandler}
+        />
       </div>
     );
   }

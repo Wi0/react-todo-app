@@ -7,7 +7,7 @@ export default props =>
     <Fragment>
         <AppBar>
             <Toolbar>
-                <Typography variant="headline" color="inherit">
+                <Typography variant="h4" color="inherit">
                     Todo App
                 </Typography>
             </Toolbar>
